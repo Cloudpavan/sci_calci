@@ -1,13 +1,12 @@
-# Use an official Maven runtime as the base image
-FROM maven:3.8.4-openjdk-17-slim AS build
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:11
 
-# Set the working directory inside the container
-WORKDIR /app
+# Set the working directory in the container
+WORKDIR /usr/local/app
 
-# Copy the rest of the application source code
+# Copy the application's JAR file and configuration files to the container
 COPY . .
 
-
-# Expose the port that the application listens on
-ENV 80
-EXPOSE 8080
+# Expose the port your application listens on (if applicable)
+ENV PORT 80
+EXPOSE 80
